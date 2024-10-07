@@ -211,8 +211,8 @@ const tones = {
         <div
           className="absolute flex flex-col justify-center items-center w-[100px] h-[100px] md:w-[250px] md:h-[250px] rounded-full border-black border-4 bg-gray-950">
           <h1 className="text-white text-center text-2xl"> Score:&nbsp;{score}</h1>
-          {!hideButton && <button onClick={handleStartButton} className="text-red-600 text-center text-2xl">Start Game</button>}
-          {gameOver ?  <button onClick={restartButton} className="text-red-600 text-center text-2xl">Restart</button> : <></> }
+          {!hideButton && <button onClick={handleStartButton} className="text-red-600 text-center text-lg md:text-2xl">Start Game</button>}
+          {gameOver ?  <button onClick={restartButton} className="text-red-600 text-center text-lg md:text-2xl">Restart</button> : <></> }
           </div>
       </div>
   </main>
