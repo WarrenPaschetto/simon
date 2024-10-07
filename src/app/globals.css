@@ -25,3 +25,16 @@ body {
     text-wrap: balance;
   }
 }
+
+.game-piece-top-left {
+  border-top-left-radius: 400px 400px;
+}
+.game-piece-top-right {
+  border-top-right-radius: 400px 400px;
+}
+.game-piece-bottom-left {
+  border-bottom-left-radius: 400px 400px;
+}
+.game-piece-bottom-right {
+  border-bottom-right-radius: 400px 400px;
+}
