@@ -45,24 +45,29 @@ export default function Home() {
     showMoves(addMove);
   }
 
- // Function to play tones with the specified frequency and duration
- const playTone = (frequency: number, duration: number = 300) => {
-  // Use type assertion to inform TypeScript about webkitAudioContext
-  const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-  const oscillator = audioCtx.createOscillator();
-  const gainNode = audioCtx.createGain();
+  const playTone = (frequency: number, duration: number = 300) => {
+    // Type-safe check for both AudioContext and webkitAudioContext
+    const AudioContextClass = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
 
-  oscillator.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-  oscillator.type = 'sine'; // Choose the waveform type
-  oscillator.frequency.value = frequency; // Set frequency of the tone
-  oscillator.start();
+    if (AudioContextClass) {
+      const audioCtx = new AudioContextClass();
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
 
-  // Stop the tone after the specified duration
-  setTimeout(() => {
-    oscillator.stop();
-  }, duration);
-};
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.type = 'sine'; // Choose the waveform type
+      oscillator.frequency.value = frequency; // Set frequency of the tone
+      oscillator.start();
+
+      // Stop the tone after the specified duration
+      setTimeout(() => {
+        oscillator.stop();
+      }, duration);
+    } else {
+      console.error('Web Audio API is not supported in this browser.');
+    }
+  };
 
 // Define frequencies for each Simon game button
 const tones = {
