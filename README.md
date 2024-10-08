@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simon Game 🎮
 
-## Getting Started
+A modern recreation of the classic Simon memory game, built with **React** and utilizing sound effects. The game generates a sequence of moves, and the player must replicate the sequence by clicking on the colored buttons. The game progressively gets faster and adds more moves as the player's score increases.
 
-First, run the development server:
+## Features 🚀
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Interactive Gameplay**: Players click on colored buttons to match the computer-generated sequence.
+- **Sound Effects**: Optional sound effects accompany each button press.
+- **Responsive Design**: Fully responsive layout for various screen sizes.
+- **Real-Time Feedback**: Visual and auditory cues to signal correct/incorrect moves and display the current score.
+- **Restart Functionality**: Players can restart the game when they make a mistake.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used 🛠️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: A React framework for building server-rendered applications and static websites.
+- **TypeScript**: Type-safe environment for more robust code.
+- **Lucide React**: Icons library used for sound toggle buttons.
+- **Tailwind CSS**: Utility-first CSS framework for styling the game board and UI.
+- **Web Audio API**: Used to generate tones that correspond to each button press.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation 💻
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git clone https://github.com/WarrenPaschetto/simon.git
+    cd simon
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3. Run the development server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Open the app in your browser at `http://localhost:3000`.
+
+## Gameplay 🎮
+
+- **Start the Game**: Click the "Start Game" button in the center to begin. 
+- **Sound Toggle**: Click the sound button at the top to enable/disable sound.
+- **Gameplay**: Watch the sequence of lit buttons and repeat the sequence by clicking the correct colored buttons.
+- **Increasing Difficulty**: The speed of the game increases as you progress through the levels.
+- **Restart**: If you make a mistake, click the "Restart" button to try again.
+
+## Code Overview 📂
+
+### Main Components
+
+1. **`Home` Component**: 
+    - Contains the game logic, including the sequence generation, button click handlers, and state management.
+    - Uses `useState` hooks to manage the state of the game.
+    - Manages sound functionality using the Web Audio API.
+
+2. **Key Functions**:
+    - `generateMove`: Randomly generates the next move for the computer.
+    - `checkPlayerMoves`: Validates the player’s input and checks if it matches the computer's sequence.
+    - `playTone`: Plays a tone associated with each color button.
+    - `handleClick[Color]`: Handles user clicks for each of the four colored buttons.
+
+3. **Game Board**:
+    - The board is divided into four colored sections that react to user inputs.
+    - Each section has unique sound frequencies using sine waves for an immersive experience.
+
+## How to Play 🕹️
+
+1. Click the "Start Game" button to begin.
+2. The game will display a sequence of colors. Memorize it.
+3. Click the buttons in the correct sequence.
+4. The game will add one new color to the sequence after each round.
+5. The game ends when the user fails to replicate the sequence.
+
+## Contributing 🤝
+
+Contributions are welcome! If you find any bugs or have ideas for new features, feel free to open an issue or submit a pull request.
+
+## License 📄
+
+This project is licensed under the MIT License.
